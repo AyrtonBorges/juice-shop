@@ -124,6 +124,7 @@ import { orderHistory, allOrders, toggleDeliveryStatus } from './routes/orderHis
 import { continueCode, continueCodeFindIt, continueCodeFixIt } from './routes/continueCode'
 import { serveChallengesWithCodeSnippet, serveCodeSnippet, checkVulnLines } from './routes/vulnCodeSnippet'
 import { ensureFileIsPassed, handleZipFileUpload, checkUploadSize, checkFileType, handleXmlUpload, handleYamlUpload } from './routes/fileUpload'
+import challengeToggle from './routes/challengeToggle'
 
 const app = express()
 const server = new http.Server(app)
@@ -581,6 +582,7 @@ restoreOverwrittenFilesWithOriginals().then(() => {
   app.put('/rest/basket/:id/coupon/:coupon', applyCoupon())
   app.get('/rest/admin/application-version', retrieveAppVersion())
   app.get('/rest/admin/application-configuration', retrieveAppConfiguration())
+  app.use('/rest/admin/challenges', challengeToggle)
   app.get('/rest/repeat-notification', repeatNotification())
   app.get('/rest/continue-code', continueCode())
   app.get('/rest/continue-code-findIt', continueCodeFindIt())
