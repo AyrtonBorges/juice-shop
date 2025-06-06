@@ -106,6 +106,12 @@ For a detailed introduction, full list of features and architecture overview ple
 4. Browse to <http://localhost:3000> (on macOS and Windows browse to
    <http://192.168.99.100:3000> if you are using docker-machine instead of the native docker installation)
 
+### Docker Compose
+
+1. Install [Docker](https://www.docker.com) and [Docker Compose](https://docs.docker.com/compose/install/)
+2. Run `docker compose up` in the project root
+3. Browse to <http://localhost:3000>
+
 ### Vagrant
 
 1. Install [Vagrant](https://www.vagrantup.com/downloads.html) and
