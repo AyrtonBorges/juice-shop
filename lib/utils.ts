@@ -190,7 +190,10 @@ export function getChallengeEnablementStatus (challenge: Challenge,
 
   return { enabled: true, disabledBecause: null }
 }
-export function isChallengeEnabled (challenge: Challenge): boolean {
+export function isChallengeEnabled (challenge?: Challenge): boolean {
+  if (!challenge) {
+    return true
+  }
   const override = getOverride(challenge.key)
   if (override !== undefined) {
     return override
