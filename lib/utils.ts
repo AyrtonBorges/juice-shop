@@ -13,6 +13,7 @@ import download from 'download'
 import crypto from 'node:crypto'
 import clarinet from 'clarinet'
 import type { Challenge } from 'data/types'
+import { getOverride } from './challengeOverride'
 
 import isHeroku from './is-heroku'
 import isDocker from './is-docker'
@@ -190,6 +191,10 @@ export function getChallengeEnablementStatus (challenge: Challenge,
   return { enabled: true, disabledBecause: null }
 }
 export function isChallengeEnabled (challenge: Challenge): boolean {
+  const override = getOverride(challenge.key)
+  if (override !== undefined) {
+    return override
+  }
   const { enabled } = getChallengeEnablementStatus(challenge)
   return enabled
 }
