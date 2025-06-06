@@ -1,6 +1,8 @@
-version: '3'
 services:
-  juice-shop:
+  sut:
+    build: ./test/smoke/
+    links:
+      - app
+  app:
     image: bkimminich/juice-shop:latest
-    ports:
-      - "3000:3000"
+    build: ./
